@@ -461,7 +461,7 @@ if __name__ == "__main__":
             num_requests = int(sys.argv[2]) if len(sys.argv) > 2 else 2
             max_concurrent = int(sys.argv[3]) if len(sys.argv) > 3 else 2
             max_tokens = int(sys.argv[4]) if len(sys.argv) > 4 else 100
-            context_size = int(sys.argv[5]) if len(sys.argv) > 5 else 200000  # Default to 200k tokens
+            context_size = int(sys.argv[5]) if len(sys.argv) > 5 else 100000  # Default to 100k tokens
             timeout = int(sys.argv[6]) if len(sys.argv) > 6 else 600  # 10 minutes timeout
             run_large_context_test(num_requests, max_concurrent, max_tokens, context_size, timeout)
         else:
