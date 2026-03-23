@@ -14,5 +14,8 @@ export LLAMA_CACHE="unsloth/Qwen3.5-27B-GGUF"
     --temp 0.6 \
     --top-p 0.95 \
     --top-k 20 \
-    --min-p 0.00
+    --min-p 0.00 \
+    --jinja \
+#    --chat-template chatml \
+#    --chat-template-file qwen3.5_chat_template.jinja
 
