@@ -5,17 +5,20 @@ export LLAMA_CACHE="unsloth/Qwen3.5-27B-GGUF"
     --no-mmap \
     --port 8888 \
     --host 0.0.0.0 \
-    --ctx-size 262144 \
+    --ctx-size 200000 \
     --reasoning off \
     --kv-unified \
     --cache-type-k q8_0 --cache-type-v q8_0 \
     --flash-attn on --fit on \
     --alias "mymodel" \
-    --temp 0.6 \
-    --top-p 0.95 \
-    --top-k 20 \
-    --min-p 0.00 \
+    --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
     --jinja \
+    --ubatch-size 1024 --batch-size 4096 \
+    --ctx-checkpoints 0 \
+    --swa-full \
+    --cont-batching \
+
+#    --ctx-size 262144 \
 #    --chat-template chatml \
 #    --chat-template-file qwen3.5_chat_template.jinja
 
