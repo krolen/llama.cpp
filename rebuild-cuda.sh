@@ -26,7 +26,8 @@ cd build
 # We explicitly set CUDAToolkit_ROOT to solve your 'library root' error
 cmake .. \
   -DGGML_CUDA=ON \
-  -DCMAKE_CUDA_ARCHITECTURES=120 \
+  -DCMAKE_CUDA_ARCHITECTURES=120a \
+  -DGGML_NATIVE=OFF \
   -DCUDAToolkit_ROOT=$CUDA_PATH \
   -DCMAKE_CUDA_COMPILER=$CUDA_PATH/bin/nvcc \
   -DGGML_CUDA_F16=ON \
