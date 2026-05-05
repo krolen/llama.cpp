@@ -48,21 +48,24 @@ export LLAMA_CACHE="/home/kot/unsloth"
 # gemma 4
 #    --reasoning off \
 #    -hf ggml-org/gemma-4-31B-it-GGUF:Q4_K_M \
+#    --no-mmap \
+#    --ctx-size 181072 \
+#    --temp 1.0 --top-p 0.95 --top-k 64 --min-p 0.00 \
+
 ./build/bin/llama-server \
     -hf unsloth/gemma-4-31B-it-GGUF:UD-Q4_K_XL \
-    -ngl 99 \
+    -ngl all --flash-attn on --fit on \
     --no-mmap \
     --port 8888 \
     --host 0.0.0.0 \
-    --ctx-size 181072 \
+    --ctx-size 65536 \
     --kv-unified \
     --cache-type-k q8_0 --cache-type-v q8_0 \
-    --flash-attn on --fit on \
     --alias "mymodel" \
-    --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
+    --temp 1.0 --top-p 0.95 --top-k 64 --min-p 0.00 \
     --jinja \
     --ctx-checkpoints 0 \
-    --cont-batching
+    --cont-batching \
 
 
 
