@@ -52,22 +52,61 @@ export LLAMA_CACHE="/home/kot/unsloth"
 #    --ctx-size 181072 \
 #    --temp 1.0 --top-p 0.95 --top-k 64 --min-p 0.00 \
 
+export CUDA_VISIBLE_DEVICES=0
+export HIP_VISIBLE_DEVICES=""
+export ROCR_VISIBLE_DEVICES=""
+export HSA_OVERRIDE_GFX_VERSION=""
+
+#./build/bin/llama-server \
+#    -hf unsloth/gemma-4-31B-it-GGUF:UD-Q4_K_XL \
+#    -ngl all --flash-attn on --fit on \
+#    --no-mmap \
+#    --port 8888 \
+#    --host 0.0.0.0 \
+#    --ctx-size 98304 \
+#    --kv-unified \
+#    --cache-type-k q8_0 --cache-type-v q8_0 \
+#    --alias "mymodel" \
+#    --temp 1.0 --top-p 0.95 --top-k 64 --min-p 0.00 \
+#    --ctx-checkpoints 0 \
+#    --cont-batching \
+
 ./build/bin/llama-server \
     -hf unsloth/gemma-4-31B-it-GGUF:UD-Q4_K_XL \
-    -ngl all --flash-attn on --fit on \
+    --spec-draft-hf unsloth/gemma-4-E4B-it-GGUF:UD-Q4_K_XL \
+    -ngl all -ngld all \
+    -fa on --fit on \
     --no-mmap \
     --port 8888 \
     --host 0.0.0.0 \
-    --ctx-size 65536 \
+    --ctx-size 81920 \
+    --spec-draft-n-max 16 \
+    --parallel 1 \
     --kv-unified \
     --cache-type-k q8_0 --cache-type-v q8_0 \
     --alias "mymodel" \
     --temp 1.0 --top-p 0.95 --top-k 64 --min-p 0.00 \
-    --jinja \
     --ctx-checkpoints 0 \
-    --cont-batching \
+    --cont-batching
 
-
+#
+#./build/bin/llama-server \
+#    -hf unsloth/gemma-4-31B-it-GGUF:UD-Q4_K_XL \
+#    --spec-draft-hf unsloth/gemma-4-E2B-it-GGUF:UD-Q4_K_XL \
+#    -ngl all -ngld all \
+#    -fa on --fit on \
+#    --no-mmap \
+#    --port 8888 \
+#    --host 0.0.0.0 \
+#    --ctx-size 81920 \
+#    --spec-draft-n-max 12 \
+#    --parallel 1 \
+#    --kv-unified \
+#    --cache-type-k q8_0 --cache-type-v q4_0 \
+#    --alias "mymodel" \
+#    --temp 1.0 --top-p 0.95 --top-k 64 --min-p 0.00 \
+#    --ctx-checkpoints 0 \
+#    --cont-batching
 
 # if one need to download  models
 
